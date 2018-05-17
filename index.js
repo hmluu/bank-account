@@ -3,13 +3,14 @@ const morgan = require('morgan');
 const app = express();
 const PORT = process.env.PORT || 3005;
 const accountsRoutes = require('./routes/accounts');
-
+const transactionsRoutes = require('./routes/transactions');
 // const fs = require('fs');
 // const path = require('path');
 
 app.use(morgan('dev'));
 app.use(express.json());
 app.use('/', accountsRoutes);
+app.use('/', transactionsRoutes);
 
 app.get('/', (request, response) => {
   response.send('It works!');
