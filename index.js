@@ -1,10 +1,11 @@
 const express = require('express');
 const morgan = require('morgan');
-const fs = require('fs');
-const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3005;
-const accountsPath = path.join(__dirname, 'accounts.json');
+const accountsRoutes = require('./routes/accounts');
+
+// const fs = require('fs');
+// const path = require('path');
 
 app.use(morgan('dev'));
 app.use(express.json());
