@@ -1,17 +1,1 @@
-[{
-  "id": "072df980-59e0-11e8-8d4e-5f05af15f477",
-  "accountHolder": "Delilah Soto",
-  "bankName": "HSBS",
-  "description": "checking"
-  },
-{
-  "id": "8115dc40-59e0-11e8-9ae7-3dd748e4996a",
-  "accountHolder": "Penelope van der Veer",
-  "bankName": "Citibank",
-  "description": "savings"
-  },
-  {"id": "8869c6a0-59e0-11e8-8acc-65fb7ad06745",
-  "accountHolder": "Margaret Emilia Bonaparte",
-  "bankName": "Wells Fargo",
-  "description": "checking"
-  }]
+[{"id":"072df980-59e0-11e8-8d4e-5f05af15f477","accountHolder":"Delilah Soto","bankName":"HSBS","description":"checking"},{"id":"8115dc40-59e0-11e8-9ae7-3dd748e4996a","accountHolder":"Penelope van der Veer","bankName":"Citibank","description":"savings"}]
