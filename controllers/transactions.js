@@ -6,8 +6,8 @@ const index = (request, response) => {
 }
 
 const show = (request, response) => {
-  const accountTransactions = transactionModel.show(request.params.account_id);
-  response.send(accountTransactions);
+  const accountTransaction = transactionModel.show(request.params.transaction_id);
+  response.send(accountTransaction); //show is only showing one transaction
 }
 
 const create = (request, response) => {
@@ -15,11 +15,11 @@ const create = (request, response) => {
 }
 
 const update = (request, response) => {
-  const accountTransactions = accountModel.update(request.params.account_id, request.body);
-}
+  const accountTransactions = transactiontModel.update(request.params.transaction_id, request.body);
+} //go back and fix variable
 
 const destroy = (request, response) => {
-  const account = accountModel.destroy(request.params.account_id);
+  const account = transactiontModel.destroy(request.params.transaction_id);
 }
 
 
