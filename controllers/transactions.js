@@ -15,11 +15,11 @@ const create = (request, response) => {
 }
 
 const update = (request, response) => {
-  const accountTransactions = transactiontModel.update(request.params.transaction_id, request.body);
+  const accountTransactions = transactionModel.update(request.params.transaction_id, request.body);
 } //go back and fix variable
 
 const destroy = (request, response) => {
-  const account = transactiontModel.destroy(request.params.transaction_id);
+  const accountTransactions = transactiontModel.destroy(request.params.transaction_id);
 }
 
 

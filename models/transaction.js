@@ -28,8 +28,8 @@ const create = ({account_id, title, amount, pending}) => {
   const newTransaction = {
     account_id,
     title,
-    amount,
-    pending,
+    amount: parseFloat(amount),
+    pending: Boolean(pending),
     id: uuidv1()
   }
   allTransactions.push(newTransaction);
@@ -42,14 +42,21 @@ const update = (id, {account_id, title, amount, pending}) => {
   const transactionsJSON = fs.readFileSync(transactionsPath, 'utf-8');
   const allTransactions = JSON.parse(transactionsJSON);
   let newUpdatedTransaction;
-  const updatedTransactions = transactions.map( transaction => {
-    if (transaction_id === id) {
+  let updatedPending;
+  const updatedTransactions = transaction.map( transaction => {
+    if (transaction.id === id) {
+      if (pending === 'undefined') {
+        updatedPending = transaction.pending
+      } else {
+        updatedPending = Boolean(pending)
+      }
       newUpdatedTransaction = {
         id,
         account_id: account_id || transaction.account_id,
         title: title || transaction.title,
-        amount: amount || transaction.amount,
-        pending: pending || transaction.pending,
+        amount: parseFloat(amount) || transaction.amount,
+        pending: updatedPending
+
       };
       return newUpdatedTransaction;
     } else {
