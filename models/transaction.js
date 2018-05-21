@@ -37,9 +37,29 @@ const create = ({account_id, title, amount, pending}) => {
   fs.writeFileSync(transactionsPath, transactionsJSONstring);
   return newTransaction;
 }
+
 const update = (id, {account_id, title, amount, pending}) => {
-  
-}
+  const transactionsJSON = fs.readFileSync(transactionsPath, 'utf-8');
+  const allTransactions = JSON.parse(transactionsJSON);
+  let newUpdatedTransaction;
+  const updatedTransactions = transactions.map( transaction => {
+    if (transaction_id === id) {
+      newUpdatedTransaction = {
+        id,
+        account_id: account_id || transaction.account_id,
+        title: title || transaction.title,
+        amount: amount || transaction.amount,
+        pending: pending || transaction.pending,
+      };
+      return newUpdatedTransaction;
+    } else {
+      return transaction;
+    }
+  })
+   transactionsJSONstring = JSON.stringify(allTransactions);
+   fs.writeFileSync(transactionsPath, transactionsJSONstring);
+   return newUpdatedAccount;
+};
 
 const destroy = (id) => {
   let matchedTransactionID;
