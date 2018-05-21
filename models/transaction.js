@@ -22,7 +22,7 @@ console.log(foundTransaction);
   foundTransaction.accountHolder = foundAccount.accountHolder
   return foundTransaction;
 }
-const create = ({account_id, title, amount, pending}) => {
+const create = (account_id, {title, amount, pending}) => {
   const transactionsJSON = fs.readFileSync(transactionsPath, 'utf-8');
   const allTransactions = JSON.parse(transactionsJSON);
   const newTransaction = {
@@ -43,7 +43,7 @@ const update = (id, {account_id, title, amount, pending}) => {
   const allTransactions = JSON.parse(transactionsJSON);
   let newUpdatedTransaction;
   let updatedPending;
-  const updatedTransactions = transaction.map( transaction => {
+  const updatedTransactions = allTransaction.map( transaction => {
     if (transaction.id === id) {
       if (pending === 'undefined') {
         updatedPending = transaction.pending
@@ -65,7 +65,7 @@ const update = (id, {account_id, title, amount, pending}) => {
   })
    transactionsJSONstring = JSON.stringify(allTransactions);
    fs.writeFileSync(transactionsPath, transactionsJSONstring);
-   return newUpdatedAccount;
+   return newUpdatedTransaction;
 };
 
 const destroy = (id) => {
@@ -73,7 +73,7 @@ const destroy = (id) => {
   const transactionsJSON = fs.readFileSync(transactionsPath, 'utf-8');
   const allTransactions = JSON.parse(transactionsJSON);
   const newArrayTransactions = allTransactions.filter( transaction => {
-    if (transaction_id === id) {
+    if (transaction.id === id) {
       matchedTransactionID = transaction;
       return false;
     } else {
@@ -81,7 +81,7 @@ const destroy = (id) => {
     }
   });
   newArrayTransactionsJSON = JSON.stringify(newArrayTransactions);
-  fs.writeFileSync(transactionsPath, newArrayAccountsJSON);
+  fs.writeFileSync(transactionsPath, newArrayTransactionsJSON);
   return matchedTransactionID;
 }
 
